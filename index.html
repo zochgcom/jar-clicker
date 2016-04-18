@@ -40,6 +40,22 @@ Chrome
      with (processingInstance) {
         size(500, 500); 
         frameRate(30);
+		
+		
+		//creditAd
+		var creditX = 40;
+		var creditY = 40;
+		var creditBredde = 400;
+		var creditHoojde = 335;
+		
+		
+		//Credit's
+		var creditsignX = 250;
+		var creditsingY = 200;
+		var creditOpen = false;
+		var creditsignBredde = 180;
+		var creditssignHoojde = 180;
+		
       
 	  //shoppen
 	  var shopsignX = 350;
@@ -210,9 +226,26 @@ Chrome
 	if (shopON === true && mouseX > infoX4 && mouseX < infoX4 + infoBredde4 && mouseY > infoY4 && mouseY < infoY4 + infoHoojde4){
 	alert("ex: Then you have buy one tv. will you every sec. get 5 coins");
 	}
+	
+	//Credit'ssign Open Funtion
+	
+	  if (mouseX > 150 && mouseX < 150 + 170 && mouseY > 410 && mouseY < 410 + 100 ) {
+	
+	if(creditOpen ===true){
+	creditOpen = false;
+	}else{
+	creditOpen = true;
+	}
+	
+		}
+	
 	 };
 	 
-	
+	 /* @pjs preload="Jar2.png"; */
+	var creditAd = loadImage("creditAd.png");
+	 
+	/* @pjs preload="Jar2.png"; */
+	var creditsignImg = loadImage("CreditSign.png");
 	 
 	 /* @pjs preload="Jar2.png"; */
 	var jarImg = loadImage("Jar2.png");
@@ -329,13 +362,35 @@ Chrome
 	 }
 	 }
 	
+	image(creditsignImg,150,410,170,100);
+	
+	if (creditOpen === true) {
+	image(creditAd,creditX,creditY,creditBredde,creditHoojde);
+	text("Click on the sign again to close",150,400);
+	
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+	
+	
 	
 	  }
+	  
     }};
+	
+	
+	
 
     // Get the canvas that Processing-js will use
     var canvas = document.getElementById("mycanvas"); 
-    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor
     var processingInstance = new Processing(canvas, sketchProc); 
  </script>
 
