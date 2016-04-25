@@ -42,6 +42,34 @@ Chrome
         frameRate(30);
 		
 		
+		
+		
+		
+		//?Jars
+		var NewsX = 40;
+		var NewsY = 40;
+        var NewsHoojde = 400;
+        var NewsBredde = 335;
+        var Newsjar = false;
+		
+        var ShopjarX = 40;
+        var ShopjarY =  40;
+        var ShopjarBredde = 335;
+        var ShopjarHoojde = 400;
+        var Shopjar = false;
+		
+        var TvjarX = 40;
+        var TvjarY = 40;
+        var TvHoojde = 400;
+        var TvBredde = 335;
+        var Tvjar = false;
+		
+        var ForjarX = 40;
+        var ForjarY = 40;
+        var ForjarBredde = 335;
+        var ForjarHoojde = 400;		
+		var Forjar = false;
+		
 		//creditAd
 		var creditX = 40;
 		var creditY = 40;
@@ -95,7 +123,7 @@ Chrome
 	 var skovpris = 50;
 	 var butikpris = 100;
 	 var avispris = 350;
-	 var tvpris = 1000;
+	 var tvpris = 10000;
 	 
 	 //bigcoin			
 	var bigcoinX = random(100,300);
@@ -190,14 +218,14 @@ Chrome
 		money = money - avispris;
 		shopON = true;
 		avisNumber = avisNumber + 1;
-		avispris = avispris + 350;
+		avispris = avispris + 450;
 		}
 		//tv
 		if (money > tvpris && shopON  && mouseX > tvX && mouseX < tvX + tvBredde && mouseY > tvY && mouseY < tvY + tvHoojde){
 		money = money - tvpris;
 		shopON = true;
 		tvNumber = tvNumber + 1;
-		tvpris = tvpris + 500;
+		tvpris = tvpris + 10000;
 		}
 	 
 	 
@@ -210,23 +238,49 @@ Chrome
 	}
 	
 		}
+	
+		
+	Forjar = false;
+    Shopjar = false;
+	Newsjar = false;	
+    Tvjar = false;	
+	
+		//Forrest Open
 		
 	if (shopON === true && mouseX > infoX && mouseX < infoX + infoBredde && mouseY > infoY && mouseY < infoY + infoHoojde){
-	alert("ex: Then you have buy one forrest. will you get 1+ coins per. click.");
+	if(Forjar ===true){
+	Forjar = false;
+	}else{
+	Forjar = true;
 	}
+	}
+	//Shop Open
 	
 	 if (shopON === true && mouseX > infoX2 && mouseX < infoX2 + infoBredde2 && mouseY > infoY2 && mouseY < infoY2 + infoHoojde2){
-	alert("ex: Then you have buy one shops. will you get 5+ coins per. click.");
+	if(Shopjar ===true){
+	Shopjar = false;
+	}else{
+	Shopjar = true;
 	}
+	}
+	//Newspaper Open
 	
 	if (shopON === true && mouseX > infoX3 && mouseX < infoX3 + infoBredde3 && mouseY > infoY3 && mouseY < infoY3 + infoHoojde3){
-	alert("ex: Then you have buy one newspaper. will you every sec. get 1 coins");
+	if(Newsjar ===true){
+	Newsjar = false;
+	}else{
+	Newsjar = true;
 	}
+	}
+	//Tv Open
 	
 	if (shopON === true && mouseX > infoX4 && mouseX < infoX4 + infoBredde4 && mouseY > infoY4 && mouseY < infoY4 + infoHoojde4){
-	alert("ex: Then you have buy one tv. will you every sec. get 5 coins");
+	if(Tvjar ===true){
+	Tvjar = false;
+	}else{
+	Tvjar = true;
 	}
-	
+	}
 	//Credit'ssign Open Funtion
 	
 	  if (mouseX > 150 && mouseX < 150 + 170 && mouseY > 410 && mouseY < 410 + 100 ) {
@@ -241,6 +295,18 @@ Chrome
 	
 	 };
 	 
+	 /* @pjs preload="Newsjar.png"; */
+	var Newsa = loadImage("News_jar.png");
+	  
+	 /* @pjs preload="Forrestjar.png"; */
+	var Fora = loadImage("Forrest_jar.png");
+	 
+	 /* @pjs preload="TVjar.png"; */
+	var Tva = loadImage("TV_jar.png");
+	 
+	 /* @pjs preload="Shopjar.png"; */
+	var Shopa = loadImage("Shop_jar.png");
+	 
 	 /* @pjs preload="Jar2.png"; */
 	var creditAd = loadImage("creditAd.png");
 	 
@@ -248,7 +314,7 @@ Chrome
 	var creditsignImg = loadImage("CreditSign.png");
 	 
 	 /* @pjs preload="Jar2.png"; */
-	var jarImg = loadImage("Jar2.png");
+	var jarImg = loadImage("New_jar.png");
 
 	 /* @pjs preload="Money 1+.png"; */
 	var moneyImg = loadImage("Money 1+.png");
@@ -293,7 +359,7 @@ Chrome
 	
 	if (autoClicktime < millis() - autoClickTimestamp){
 	autoClickTimestamp = millis();
-	money += (1 * avisNumber) + (5 * tvNumber) ;
+	money += (5 * avisNumber) + (50 * tvNumber) ;
 	}  
 	
 	for (var i = coinListX.length -1; i >= 0; i--){
@@ -329,6 +395,10 @@ Chrome
 	   image(shopImg,shopsignX , shopsignY, shopsignBredde, shopsignHoojde);
 	  
 	  if(shopON === true){
+	  
+	  var seconds = Math.round(millis() / 1000);
+		text("Time Played: " + seconds, 15, 95);
+	    
 	    image(skovImg,400,310,80,80);
 		text(skovpris,430,405);
 		text("Forrest:  " + skovNumber,15,15);
@@ -345,7 +415,7 @@ Chrome
 		image(infoImg,345,230,30,30);
 		image(infoImg,345,130,30,30);
 		image(infoImg,345,30,30,30);
-		text("V:0.1",15,480);
+		
 	  }
 	 
 	 
@@ -369,6 +439,32 @@ Chrome
 	text("Click on the sign again to close",150,400);
 	
 	
+	}
+	
+	if (Forjar === true) {
+	image(Fora,ForjarX,ForjarY,ForjarBredde,ForjarHoojde);
+	
+	
+	
+	}
+	
+	
+	
+	if (Shopjar === true) {
+	image(Shopa,ShopjarX,ShopjarY,ShopjarBredde,ShopjarHoojde);
+	
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+	if (Newsjar === true) {
+	image(Newsa,NewsX,NewsY,NewsBredde,NewsHoojde);
 	
 	
 	
@@ -380,6 +476,17 @@ Chrome
 	
 	
 	
+	
+	if (Tvjar === true) {
+	image(Tva,TvjarX,TvjarY,TvBredde,TvHoojde);
+	
+	
+	
+	
+	
+	
+	}
+	text("V:0.8",15,490);
 	
 	  }
 	  
