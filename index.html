@@ -176,7 +176,6 @@ function getCookie(varNavn) {
 	 
 	 //penge
 	 var money = 0;
-	 
 	 money = parseInt( getCookie("money")); //setCookie("money", money);
 	  
 	 var coinX = 200 - 25;
@@ -198,6 +197,14 @@ function getCookie(varNavn) {
 	 
 	 //tv'er vi har koobt 
 	 var tvNumber = 0;
+	 
+	skovNumber =  parseInt( getCookie("skovNumber"));
+	butikNumber =  parseInt( getCookie("butikNumber"));
+	avisNumber =  parseInt( getCookie("avisNumber"));
+	tvNumber =  parseInt( getCookie("tvNumber"));
+	  
+	  
+	
 	 
 	 //
 	 var autoClicktime = 1000; //millis()
@@ -365,6 +372,12 @@ function getCookie(varNavn) {
 	  var draw = function(){
 	  
 	  setCookie("money", money);
+	  setCookie("skovNumber", skovNumber);
+	  setCookie("butikNumber", butikNumber);
+	  setCookie("avisNumber", avisNumber);
+	  setCookie("tvNumber", tvNumber);
+	  
+	  
 	  
 	background(245,245,245);
 	//jar 
