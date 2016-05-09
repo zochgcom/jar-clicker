@@ -34,13 +34,31 @@ Chrome
  -->
  
  <script>
+ 
+function setCookie(varNavn, value) {
+    document.cookie = varNavn + "=" + value;
+}
+
+function getCookie(varNavn) {
+    var name = varNavn + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
  
     var sketchProc = function(processingInstance) {
      with (processingInstance) {
         size(500, 500); 
         frameRate(30);
-		
 		
 		
 		
@@ -158,6 +176,9 @@ Chrome
 	 
 	 //penge
 	 var money = 0;
+	 
+	 money = parseInt( getCookie("money")); //setCookie("money", money);
+	  
 	 var coinX = 200 - 25;
 	 var coinY = 200 - 25;
 	 
@@ -342,6 +363,9 @@ Chrome
 	var BigcoinImg = loadImage("coin.png");
 	
 	  var draw = function(){
+	  
+	  setCookie("money", money);
+	  
 	background(245,245,245);
 	//jar 
 	if(x < width / 2 - jarSizeX / 2 ) {
