@@ -39,10 +39,13 @@ function setCookie(varNavn, value) {
 
 // Build the expiration date string:
 var expiration_date = new Date();
-var cookie_string = '';
 expiration_date.setFullYear(expiration_date.getFullYear() + 1);
 
-    document.cookie = varNavn + "=" + value + "; path=/; expires=" + expiration_date.toGMTString();
+var expires = new Date();
+ expires = new Date(new Date().getTime() + parseInt(expires) * 1000 * 60 * 60 * 24);
+
+
+document.cookie = varNavn + "=" + value + "; path=/; expires=" + expires.toGMTString();
 }
 
 function getCookie(varNavn) {
