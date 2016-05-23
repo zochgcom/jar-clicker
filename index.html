@@ -36,7 +36,13 @@ Chrome
  <script>
  
 function setCookie(varNavn, value) {
-    document.cookie = varNavn + "=" + value;
+
+// Build the expiration date string:
+var expiration_date = new Date();
+var cookie_string = '';
+expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+
+    document.cookie = varNavn + "=" + value + "; path=/; expires=" + expiration_date.toGMTString();
 }
 
 function getCookie(varNavn) {
