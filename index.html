@@ -472,15 +472,15 @@ function getCookie(varNavn) {
 		
 		
 		//Credit's
-		var creditsignX = 250;
-		var creditsingY = 200;
+		var creditsignX = 360; //width
+		var creditsingY = 245; //hieght
 		var creditOpen = false;
-		var creditsignBredde = 180;
-		var creditssignHoojde = 180;
+		var creditsignBredde = 50; //x
+		var creditssignHoojde = 350; //y
 		
       
 	  //shoppen
-	  var shopsignX = 350;
+	  var shopsignX = 340;
 	  var shopsignY = 400;
 	 var shopON = false;
 	 var shopsignBredde = 180;
@@ -588,7 +588,7 @@ function getCookie(varNavn) {
 	 
 	 var mouseClicked = function(){
 	 
-	 if (mouseX > x - 20 && mouseX < x + 20 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
+	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
 	  money += 1 + (1 * skovNumber ) + (4 * butikNumber) ;
 	  coinListX.push(x);
 	  coinListY.push(y);
@@ -633,7 +633,7 @@ function getCookie(varNavn) {
 		}
 	 
 	 
-	  if (mouseX > shopsignX && mouseX < shopsignX + shopsignBredde && mouseY > shopsignY && mouseY < shopsignY + shopsignHoojde ) {
+	  if (mouseX > shopsignX + 36 && mouseX < shopsignX + shopsignBredde - 36 && mouseY > shopsignY + 26 && mouseY < shopsignY + shopsignHoojde ) {
 	
 	if(shopON ===true){
 	shopON = false;
@@ -658,6 +658,7 @@ function getCookie(varNavn) {
 	Forjar = true;
 	}
 	}
+	
 	//Shop Open
 	
 	 if (shopON === true && mouseX > infoX2 && mouseX < infoX2 + infoBredde2 && mouseY > infoY2 && mouseY < infoY2 + infoHoojde2){
@@ -687,7 +688,7 @@ function getCookie(varNavn) {
 	}
 	//Credit'ssign Open Funtion
 	
-	  if (mouseX > 150 && mouseX < 150 + 170 && mouseY > 410 && mouseY < 410 + 100 ) {
+	  if (mouseX > 150 - 8 && mouseX < 150 + 180 && mouseY > 410 + 2 && mouseY < 410 + 100 ) {
 	
 	if(creditOpen ===true){
 	creditOpen = false;
@@ -698,6 +699,8 @@ function getCookie(varNavn) {
 		}
 	
 	 };
+	 
+	 
 	 
 	 /* @pjs preload="Newsjar.png"; */
 	var Newsa = loadImage("News_jar.png");
@@ -714,8 +717,9 @@ function getCookie(varNavn) {
 	 /* @pjs preload="Credits.png"; */
 	var creditAd = loadImage("Credits.png");
 	 
-	/* @pjs preload="Jar2.png"; */
-	var creditsignImg = loadImage("CreditSign.png");
+	 //Old Credit image
+	/* @pjs preload="CreditSign.png"; */
+	//var creditsignImg = loadImage("CreditSign.png");
 	 
 	 /* @pjs preload="Jar2.png"; */
 	var jarImg = loadImage("New_jar.png");
@@ -726,9 +730,9 @@ function getCookie(varNavn) {
 	 /* @pjs preload="skov.png"; */
 	var skovImg = loadImage("skov.png");
 	
-	
+	//Old Shop image
 	/* @pjs preload="Shop-Knap.png"; */
-	var shopImg = loadImage("Shop-Knap.png");
+	//var shopImg = loadImage("Shop-Knap.png");
 
 	/* @pjs preload="shop_image.png"; */
 	var butikImg = loadImage("shop_image.png");
@@ -744,6 +748,16 @@ function getCookie(varNavn) {
 	
 	/* @pjs preload="coin.png"; */
 	var BigcoinImg = loadImage("coin.png");
+	
+	// New Shop image
+	/* @pjs preload="SbtnV2.png"; */
+	var shopImg = loadImage("SbtnV2.png");
+	
+	//New Credit image
+	/* @pjs preload="CbtnV2.png"; */
+	var creditsignImg = loadImage("CbtnV2.png");
+	
+	
 	
 	  var draw = function(){
 	  
@@ -845,7 +859,7 @@ function getCookie(varNavn) {
 	 }
 	 }
 	
-	image(creditsignImg,150,410,170,100);
+	image(creditsignImg,creditsignBredde,creditssignHoojde,creditsignX,creditsingY);
 	
 	if (creditOpen === true) {
 	image(creditAd,creditX,creditY,creditBredde,creditHoojde);
