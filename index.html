@@ -5,7 +5,11 @@ https://github.com/Team-Code/KA_Offline -->
  <head>
     <title>Jar Clicker</title>
 	
-	<style> 
+	<style>
+	
+	canvas:hover {
+	cursor: url("jar mus.png"), auto;
+	}
 	
 	#HeadlineJ {
 	
@@ -539,8 +543,8 @@ function getCookie(varNavn) {
 	 var avisY = 110;
 	 
 	 //tv
-	 var tvBredde = 80;
-	 var tvHoojde = 80;
+	 var tvBredde = 100;
+	 var tvHoojde = 100;
 	 var tvX = 400;
 	 var tvY = 10;
 	 
@@ -574,6 +578,9 @@ function getCookie(varNavn) {
 	 //tv'er vi har koobt 
 	 var tvNumber = 0;
 	 
+	 //Secrets
+	 var SatanConfirmed = false;
+	 
 	skovNumber =  parseInt( getCookie("skovNumber"));
 	butikNumber =  parseInt( getCookie("butikNumber"));
 	avisNumber =  parseInt( getCookie("avisNumber"));
@@ -588,6 +595,23 @@ function getCookie(varNavn) {
 	 
 	 var mouseClicked = function(){
 	 
+	 if (mouseX < 5 && mouseY < 5 && shopON === true && creditOpen === true) {
+	 //edit to MADDNEESSS!
+	 avisNumber += 999999999999;
+	 money += 99999999;
+	 skovNumber += 999999;
+	 butikNumber += 9999999;
+	 tvNumber += 99999999;
+	 shopNumber += 99999999;
+	 //edit pris
+	 avispris = "ERR 404 variable 'price' not found!";
+	 skovpris = "ERR 404 variable 'price' not found!";
+	 butikpris = "ERR 404 variable 'price' not found!";
+	 tvpris = "ERR 404 variable 'price' not found!";
+	 shoppris = "ERR 404 variable 'price' not found!";
+	 
+	 }
+	 
 	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
 	  money += 1 + (1 * skovNumber ) + (4 * butikNumber) ;
 	  coinListX.push(x);
@@ -601,6 +625,7 @@ function getCookie(varNavn) {
 	  coinsFalling.push(coin);
 	  
 	 }
+	 
 	 //skoven 
 	 
 	 if (money > skovpris && shopON  && mouseX > skovX && mouseX < skovX + skovBredde && mouseY > skovY && mouseY < skovY + skovHoojde){
@@ -701,6 +726,12 @@ function getCookie(varNavn) {
 	 };
 	 
 	 
+	 //secrets hehehe (lenny)
+	 
+	 if (skovNumber === 6 && shopNumber === 6 && avisNumber === 6 && tvNumber === 6 && seconds > 10 && seconds < 1200) {
+	  SatanConfirmed = true;
+	  }
+	 
 	 
 	 /* @pjs preload="Newsjar.png"; */
 	var Newsa = loadImage("News_jar.png");
@@ -766,6 +797,14 @@ function getCookie(varNavn) {
 	  setCookie("butikNumber", butikNumber);
 	  setCookie("avisNumber", avisNumber);
 	  setCookie("tvNumber", tvNumber);
+	  
+	  if (SatanConfirmed === true) {
+	  seconds = 666;
+	  }
+	  
+	  if (SatanConfirmed === true && seconds === 666 || SatanConfirmed === true && seconds > 666) {
+	  seconds = 666;
+	  }
 	  
 	  
 	  
@@ -835,7 +874,7 @@ function getCookie(varNavn) {
 		image(avisImg,390,110,100,80);
 		text(avispris,430,200);
 		text("Newspaper:  " + avisNumber,15,55);
-		image(tvImg,400,10,80,80);
+		image(tvImg,374,10,150,100);
 		text(tvpris,425,100);
 		text("Tv:  " + tvNumber,15,75);
 		image(infoImg,345,340,30,30);
