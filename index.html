@@ -611,9 +611,11 @@ function getCookie(varNavn) {
 	 var vers = 1.5;
 	
     skovNumber =  parseInt( getCookie("skovNumber"));
-	butikNumber =  parseInt( getCookie("butikNumber"));
-	avisNumber =  parseInt( getCookie("avisNumber"));
-	tvNumber =  parseInt( getCookie("tvNumber"));
+    butikNumber =  parseInt( getCookie("butikNumber"));
+    avisNumber =  parseInt( getCookie("avisNumber"));
+    tvNumber =  parseInt( getCookie("tvNumber"));
+    seconds =  parseInt( getCookie("seconds"));
+	
 	
 
     //butikpris =  parseInt( getCookie("butikpris"));
@@ -854,7 +856,7 @@ function getCookie(varNavn) {
 	  setCookie("butikNumber", butikNumber);
 	  setCookie("avisNumber", avisNumber);
 	  setCookie("tvNumber", tvNumber);
-	  setCookie("timeCookie", seconds);
+	  setCookie("seconds", seconds);
 	  setCookie("butikpris", butikpris);
 	  setCookie("skovpris", skovpris);
 	  setCookie("avispris", avispris);
