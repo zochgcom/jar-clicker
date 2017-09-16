@@ -61,7 +61,7 @@ overflow-x: hidden;
 		left: 0%;
 		color: rgb(60, 60, 60);
 		z-index: 9;
-		font-size: 10px;
+		font-size: 30px;
 		
 		}
 		
@@ -390,6 +390,7 @@ background-color: #222222;
       <canvas id="mycanvas" style="border: solid 10px black; margin-top: 210px;"></canvas> 
     </p>
 <p class="Copyright">© 2014 - 2016 Zochg inc. all rights reserved</p>
+
  </body>
  
  <!-- Run all the JavaScript stuff -->
@@ -404,17 +405,6 @@ Chrome
 
 
  -->
-
-<script type="text/javascript" id="cookieinfo"
-	src="//cookieinfoscript.com/js/cookieinfo.min.js"
-	data-bg="#645862"
-	data-fg="#FFFFFF"
-	data-link="#F1D600"
-	data-cookie="CookieInfoScript"
-	data-text-align="left"
-       data-close-text="Got it!">
-</script>
-
  
  <script>
  
@@ -428,7 +418,7 @@ var expires = new Date();
  expires = new Date(new Date().getTime() + parseInt(expires) * 1000 * 60 * 60 * 24);
 
 
-document.cookie = varNavn + "=" + value + "; path=/;expires= Thu, 18 Dec 2033 12:00:00 UTC; domain=zochgcom.github.io";
+document.cookie = varNavn + "=" + value + ";path=/; expires=Thu, 18 Dec 2033 12:00:00 UTC; domain=zochgcom.github.io";
 }
 
 function getCookie(varNavn) {
@@ -453,8 +443,7 @@ function getCookie(varNavn) {
         frameRate(30);
 		
 		
-		//Version variable
-	     var vers = "1.5";
+		
 		
 		//?Jars
 		var NewsX = 40;
@@ -566,6 +555,7 @@ function getCookie(varNavn) {
 	 var y = 80;
 	 var jarSizeX = 100;
 	 var jarSizeY = 100;
+	 var TimesClicked = 0;
 	 
 	 //penge
 	 var money = 0;
@@ -594,14 +584,34 @@ function getCookie(varNavn) {
 	 //Secrets
 	 var SatanConfirmed = false;
 	 
-	skovNumber =  parseInt( getCookie("skovNumber"));
+	 //Bar
+	 var barY = 0;
+	 var barYPos = 420;
+	 
+	 //BarBackground
+	 var barBackgroundY = 120;
+	 var BGbarY = 300;
+	 
+	 //Bar Filled
+	 var BarFilledX = 52;
+	 var BarFilledY = 280;
+	 var BarFilled = false;
+	 
+	 //Version Variable
+	 var vers = 1.5;
+	
+    skovNumber =  parseInt( getCookie("skovNumber"));
 	butikNumber =  parseInt( getCookie("butikNumber"));
 	avisNumber =  parseInt( getCookie("avisNumber"));
 	tvNumber =  parseInt( getCookie("tvNumber"));
-	  
-	  
 	
-	 
+
+    //butikpris =  parseInt( getCookie("butikpris"));
+	//skovpris =  parseInt( getCookie("skovpris"));
+	//avispris =  parseInt( getCookie("avispris"));
+	//tvpris =  parseInt( getCookie("tvpris"));
+	
+
 	 //
 	 var autoClicktime = 1000; //millis()
 	 var autoClickTimestamp = millis();
@@ -624,22 +634,26 @@ function getCookie(varNavn) {
 	 shoppris = "ERR 404 variable 'price' not found!";
 	 
 	 }
-		 
+	 
 	 if (mouseX > 495 && mouseY < 5 && shopON === true && creditOpen === true) {
-	 //edit to normalness
+	 //Remove Madness
 	 avisNumber = 0;
 	 money = 0;
 	 skovNumber = 0;
 	 butikNumber = 0;
 	 tvNumber = 0;
 	 shopNumber = 0;
-	 } 
+	 }
 	 
 	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
 	  money += 1 + (1 * skovNumber ) + (4 * butikNumber) ;
 	  coinListX.push(x);
 	  coinListY.push(y);
-	
+	  
+	  barY++;
+	  barYPos--;
+	  TimesClicked++;
+
 	  coinY = 200 - 25;
 		
 	  var coin = {};
@@ -754,8 +768,7 @@ function getCookie(varNavn) {
 	 if (skovNumber === 6 && shopNumber === 6 && avisNumber === 6 && tvNumber === 6 && seconds > 10 && seconds < 1200) {
 	  SatanConfirmed = true;
 	  }
-	 
-	 
+	  
 	 /* @pjs preload="Newsjar.png"; */
 	var Newsa = loadImage("News_jar.png");
 	  
@@ -811,15 +824,31 @@ function getCookie(varNavn) {
 	/* @pjs preload="CbtnV2.png"; */
 	var creditsignImg = loadImage("CbtnV2.png");
 	
+	/* @pjs preload="Bar.png"; */
+	var BarImg = loadImage("Bar.png");
+	
+	/* @pjs preload="BarBG.png"; */
+	var BarBGImg = loadImage("BarBG.png");
+	
+	/* @pjs preload="BarFrame.png"; */
+	var BarFrame = loadImage("BarFrame.png");
+
+	
 	
 	
 	  var draw = function(){
+	
 	  
 	  setCookie("money", money);
 	  setCookie("skovNumber", skovNumber);
 	  setCookie("butikNumber", butikNumber);
 	  setCookie("avisNumber", avisNumber);
 	  setCookie("tvNumber", tvNumber);
+	  setCookie("timeCookie", seconds);
+	  setCookie("butikpris", butikpris);
+	  setCookie("skovpris", skovpris);
+	  setCookie("avispris", avispris);
+	  setCookie("tvpris", tvpris);
 	  
 	  if (SatanConfirmed === true) {
 	  seconds = 666;
@@ -832,6 +861,47 @@ function getCookie(varNavn) {
 	  
 	  
 	background(245,245,245);
+	
+	//BarBackground
+	  image(BarBGImg, 30, barBackgroundY, 30, BGbarY);
+	  
+	  //Bar
+	  //image(BarImg, 30, barYPos, 30, barY);
+	  //noFill();
+	  fill(253, 148, 155);
+	  rect(30, barYPos, 29, barY)
+	  
+	  //BarFrame
+	  //image (BarFrame, 30, barYPos, 30, barY);
+	  
+	  //ClampY
+	if (barY >= BGbarY) {
+	  
+	  barY = BGbarY;
+	  barYPos = 100;
+	  
+	  }
+	  
+	  //BarFull
+	  var CheckFilled = function () {
+	  if(barY === BGbarY) {
+	  BarFilled = true;
+	  }
+	  };
+	  
+	  CheckFilled();
+	  
+	  var Filled = function () {
+	  if( BarFilled === true){
+	  barY = 0;
+	  barYPos = 420;
+	  BarFilled = false;
+	  money += money;
+	  }
+	  };
+	  
+	  Filled();
+
 	//jar 
 	if(x < width / 2 - jarSizeX / 2 ) {
 	 x += 1;
@@ -844,6 +914,7 @@ function getCookie(varNavn) {
 	   image(jarImg, x - 25, y, jarSizeX, jarSizeY);
 	  
 	fill (0,0,0)
+	textSize(12);
 	text("Money: "+ money, 280,20);
 	
 	if (autoClicktime < millis() - autoClickTimestamp){
@@ -887,7 +958,8 @@ function getCookie(varNavn) {
 	  
 	  var seconds = Math.round(millis() / 1000);
 		text("Time Played: " + seconds, 15, 95);
-	    
+		
+	    textSize(12);
 	    image(skovImg,400,310,80,80);
 		text(skovpris,430,405);
 		text("Forrest:  " + skovNumber,15,15);
@@ -904,7 +976,8 @@ function getCookie(varNavn) {
 		image(infoImg,345,230,30,30);
 		image(infoImg,345,130,30,30);
 		image(infoImg,345,30,30,30);
-		
+		//Times Clicked on Jar
+		text("Times Clicked: " + TimesClicked,15,115);
 	  }
 	 
 	 
@@ -975,9 +1048,18 @@ function getCookie(varNavn) {
 	
 	
 	}
-	text("v: " + vers,15,490);
 	
-	  }
+	text("V: " + vers,15,490);
+	
+	 //Bar Filled
+	  pushMatrix();
+      translate(BarFilledX,BarFilledY);
+      rotate(-HALF_PI);
+      translate(-BarFilledX,-BarFilledY);
+	  textSize(20);
+      text(barY + " / " + BGbarY, BarFilledX, BarFilledY);
+      popMatrix();
+	  }	
 	  
     }};
 	
