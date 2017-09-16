@@ -61,7 +61,7 @@ overflow-x: hidden;
 		left: 0%;
 		color: rgb(60, 60, 60);
 		z-index: 9;
-		font-size: 30px;
+		font-size: 15px;
 		
 		}
 		
@@ -405,7 +405,7 @@ Chrome
 
 
  -->
- 
+ <!--
 <script type="text/javascript" id="cookieinfo"
     src="//cookieinfoscript.com/js/cookieinfo.min.js"
     data-bg="#645862"
@@ -414,7 +414,7 @@ Chrome
     data-cookie="acceptCookies"
     data-text-align="left"
        data-close-text="I accept Cookies!">
-</script>
+</script> -->
 
  <script>
  
@@ -614,10 +614,8 @@ function getCookie(varNavn) {
     butikNumber =  parseInt( getCookie("butikNumber"));
     avisNumber =  parseInt( getCookie("avisNumber"));
     tvNumber =  parseInt( getCookie("tvNumber"));
-    //seconds =  parseInt( getCookie("seconds"));
-	
-	
-
+    secondsInt =  parseInt( getCookie("secondsInt"));
+	TimesClicked = parseInt ( getCookie("TimesClicked"));
     //butikpris =  parseInt( getCookie("butikpris"));
 	//skovpris =  parseInt( getCookie("skovpris"));
 	//avispris =  parseInt( getCookie("avispris"));
@@ -773,13 +771,6 @@ function getCookie(varNavn) {
 		}
 	
 	 };
-	 
-	 
-	 //secrets hehehe (lenny)
-	 
-	 if (skovNumber === 6 && shopNumber === 6 && avisNumber === 6 && tvNumber === 6 && seconds > 10 && seconds < 1200) {
-	  SatanConfirmed = true;
-	  }
 	  
 	 /* @pjs preload="Newsjar.png"; */
 	var Newsa = loadImage("News_jar.png");
@@ -856,21 +847,12 @@ function getCookie(varNavn) {
 	  setCookie("butikNumber", butikNumber);
 	  setCookie("avisNumber", avisNumber);
 	  setCookie("tvNumber", tvNumber);
-	  //setCookie("seconds", seconds);
+	  setCookie("secondsInt", secondsInt);
+	  setCookie("TimesClicked", TimesClicked);
 	  //setCookie("butikpris", butikpris);
 	  //setCookie("skovpris", skovpris);
 	  //setCookie("avispris", avispris);
 	  //setCookie("tvpris", tvpris);
-	  
-	  if (SatanConfirmed === true) {
-	  seconds = 666;
-	  }
-	  
-	  if (SatanConfirmed === true && seconds === 666 || SatanConfirmed === true && seconds > 666) {
-	  seconds = 666;
-	  }
-	  
-	  
 	  
 	background(245,245,245);
 	
@@ -968,8 +950,8 @@ function getCookie(varNavn) {
 	  
 	  if(shopON === true){
 	  
-	  var seconds = Math.round(millis() / 1000);
-		text("Time Played: " + seconds, 15, 95);
+	  var secondsInt = Math.round(millis() / 1000);
+		text("Time Played: " + secondsInt, 15, 95);
 		
 	    textSize(12);
 	    image(skovImg,400,310,80,80);
