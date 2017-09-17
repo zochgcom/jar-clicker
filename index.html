@@ -427,7 +427,7 @@ var expires = new Date();
  expires = new Date(new Date().getTime() + parseInt(expires) * 1000 * 60 * 60 * 24);
 
 
-document.cookie = varNavn + "=" + value + ";path=/jar-clicker/; expires=Thu, 18 Dec 2033 12:00:00 UTC; domain=zochgcom.github.io";
+document.cookie = varNavn + "=" + value + "; path=/jar-clicker/; expires=Thu, 18 Dec 2033 12:00:00 UTC; domain=zochgcom.github.io";
 }
 
 function getCookie(varNavn) {
@@ -450,9 +450,8 @@ function getCookie(varNavn) {
      with (processingInstance) {
         size(500, 500); 
         frameRate(30);
-		
-		
-		
+	
+	
 		
 		//?Jars
 		var NewsX = 40;
@@ -596,6 +595,7 @@ function getCookie(varNavn) {
 	 //Bar
 	 var barY = 0;
 	 var barYPos = 420;
+	 var times = 1;
 	 
 	 //BarBackground
 	 var barBackgroundY = 120;
@@ -615,13 +615,32 @@ function getCookie(varNavn) {
     tvNumber =  parseInt( getCookie("tvNumber"));
     secondsInt =  parseInt( getCookie("secondsInt"));
 	TimesClicked = parseInt ( getCookie("TimesClicked"));
-    //butikpris =  parseInt( getCookie("butikpris"));
-	//skovpris =  parseInt( getCookie("skovpris"));
-	//avispris =  parseInt( getCookie("avispris"));
-	//tvpris =  parseInt( getCookie("tvpris"));
 	
+    if (getCookie("butikpris") === "") {
+	
+	} else {
+	butikpris =  parseInt( getCookie("butikpris"));
+	}
+	
+	if (getCookie("tvpris") === "") {
+	
+	} else {
+	tvpris =  parseInt( getCookie("tvpris"));
+	}
+	
+	if (getCookie("avispris") === "") {
+	
+	} else {
+	avispris =  parseInt( getCookie("avispris"));
+	}
+	
+	if (getCookie("skovpris") === "") {
+	
+	} else {
+	skovpris =  parseInt( getCookie("skovpris"));
+	}
 
-	 //
+	 //timer
 	 var autoClicktime = 1000; //millis()
 	 var autoClickTimestamp = millis();
 	 
@@ -659,8 +678,8 @@ function getCookie(varNavn) {
 	  coinListX.push(x);
 	  coinListY.push(y);
 	  
-	  barY++;
-	  barYPos--;
+	  barY += parseFloat(1/times);
+	  barYPos -= 1/times;
 	  TimesClicked++;
 
 	  coinY = 200 - 25;
@@ -848,10 +867,10 @@ function getCookie(varNavn) {
 	  setCookie("tvNumber", tvNumber);
 	  setCookie("secondsInt", secondsInt);
 	  setCookie("TimesClicked", TimesClicked);
-	  //setCookie("butikpris", butikpris);
-	  //setCookie("skovpris", skovpris);
-	  //setCookie("avispris", avispris);
-	  //setCookie("tvpris", tvpris);
+	  setCookie("butikpris", butikpris);
+	  setCookie("skovpris", skovpris);
+	  setCookie("avispris", avispris);
+	  setCookie("tvpris", tvpris);
 	  
 	background(245,245,245);
 	
@@ -870,7 +889,7 @@ function getCookie(varNavn) {
 	  //ClampY
 	if (barY >= BGbarY) {
 	  
-	  barY = BGbarY;
+	  barY = 300;
 	  barYPos = 100;
 	  
 	  }
@@ -890,6 +909,7 @@ function getCookie(varNavn) {
 	  barYPos = 420;
 	  BarFilled = false;
 	  money += money;
+	  times++;
 	  }
 	  };
 	  
@@ -1050,7 +1070,7 @@ function getCookie(varNavn) {
       rotate(-HALF_PI);
       translate(-BarFilledX,-BarFilledY);
 	  textSize(20);
-      text(barY + " / " + BGbarY, BarFilledX, BarFilledY);
+      text(parseInt( barY/BGbarY*100) + "%", BarFilledX, BarFilledY);
       popMatrix();
 	  }	
 	  
