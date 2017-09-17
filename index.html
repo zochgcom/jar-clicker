@@ -444,7 +444,7 @@ function getCookie(varNavn) {
     }
     return "";
 }
-
+ 
  
     var sketchProc = function(processingInstance) {
      with (processingInstance) {
@@ -616,25 +616,25 @@ function getCookie(varNavn) {
     secondsInt =  parseInt( getCookie("secondsInt"));
 	TimesClicked = parseInt ( getCookie("TimesClicked"));
 	
-    if (getCookie("butikpris") === "") {
+    if (getCookie("butikpris") === "0") {
 	
 	} else {
 	butikpris =  parseInt( getCookie("butikpris"));
 	}
 	
-	if (getCookie("tvpris") === "") {
+	if (getCookie("tvpris") === "0") {
 	
 	} else {
 	tvpris =  parseInt( getCookie("tvpris"));
 	}
 	
-	if (getCookie("avispris") === "") {
+	if (getCookie("avispris") === "0") {
 	
 	} else {
 	avispris =  parseInt( getCookie("avispris"));
 	}
 	
-	if (getCookie("skovpris") === "") {
+	if (getCookie("skovpris") === "0") {
 	
 	} else {
 	skovpris =  parseInt( getCookie("skovpris"));
@@ -665,16 +665,16 @@ function getCookie(varNavn) {
 	 
 	 if (mouseX > 495 && mouseY < 5 && shopON === true && creditOpen === true) {
 	 //Remove Madness
-	avisNumber = 0;
-	money = 0;
-	skovNumber = 0;
-	butikNumber = 0;
-	tvNumber = 0;
-	shopNumber = 0;
-	skovpris = 50;
-	butikpris = 100;
-	avispris = 350;
-	tvpris = 10000;
+		avisNumber = 0;
+		money = 0;
+		skovNumber = 0;
+		butikNumber = 0;
+		tvNumber = 0;
+		shopNumber = 0;
+		skovpris = 50;
+		butikpris = 100;
+		avispris = 350;
+		tvpris = 10000;
 	 }
 	 
 	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
