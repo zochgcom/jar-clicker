@@ -728,6 +728,11 @@ function getCookie(varNavn) {
 	  barYPos -= 1/times;
 	  TimesClicked++;
 	  
+	  //saves bar progress
+	  setCookie("barProg", barY);
+	  setCookie("barProg2", barYPos);
+	  
+	  
 	  coinY = 200 - 25;
 		
 	  var coin = {};
@@ -1140,12 +1145,7 @@ function getCookie(varNavn) {
       translate(-BarFilledX,-BarFilledY);
 	  textSize(20);
       text(parseInt( barY/BGbarY*100) + "%", BarFilledX, BarFilledY);
-      popMatrix();	
-
-	  //saves bar progress
-	  setCookie("barProg", barY);
-	  setCookie("barProg2", barYPos);
-	  
+      popMatrix();
 	  }
     }};
 	
