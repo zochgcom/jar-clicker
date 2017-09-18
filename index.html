@@ -3,6 +3,8 @@
 https://github.com/Team-Code/KA_Offline -->
 <html> 
  <head>
+ <link rel="shortcut icon" href="New_jar.png">
+ 
     <title>Jar Clicker</title>
 	
 	<style>
@@ -595,7 +597,7 @@ function getCookie(varNavn) {
 	 //Bar
 	 var barY = 0;
 	 var barYPos = 420;
-	 var times = 1;
+	 var times = 0.25;
 	 
 	 //BarBackground
 	 var barBackgroundY = 120;
@@ -663,8 +665,12 @@ function getCookie(varNavn) {
 	 
 	 }
 	 
-	 if (mouseX > 495 && mouseY < 5 && shopON === true && creditOpen === true) {
-	 //Remove Madness
+	 if (mouseX > 460 && mouseY < 20 && shopON === true) {
+	 //Reset
+	 var resetVerify = confirm("Do you wan't to reset?")
+	 
+	 if (resetVerify === true) {
+	 
 		avisNumber = 0;
 		money = 0;
 		skovNumber = 0;
@@ -675,7 +681,14 @@ function getCookie(varNavn) {
 		butikpris = 100;
 		avispris = 350;
 		tvpris = 10000;
+		time = 0;
 		TimesClicked = 0;
+		times = 0.25;
+		barY = 0;
+		barYPos = 420;
+		} else {
+		
+		}
 	 }
 	 
 	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
@@ -914,7 +927,7 @@ function getCookie(varNavn) {
 	  barYPos = 420;
 	  BarFilled = false;
 	  money += money;
-	  times += 0.5;
+	  times += 0.25;
 	  }
 	  };
 	  
@@ -996,6 +1009,15 @@ function getCookie(varNavn) {
 		image(infoImg,345,30,30,30);
 		//Times Clicked on Jar
 		text("Times Clicked: " + TimesClicked,15,115);
+		//clear button
+	  fill(255, 0, 0);
+	  rect(460, 0, 40, 10);
+	  fill(0, 0, 0);
+	  textSize(10);
+	  fill(255,255,255);
+	  text("RESET", 464, 9);
+	  fill(0, 0, 0);
+	  	
 	  }
 	 
 	 
@@ -1077,8 +1099,7 @@ function getCookie(varNavn) {
 	  textSize(20);
       text(parseInt( barY/BGbarY*100) + "%", BarFilledX, BarFilledY);
       popMatrix();
-	  }	
-	  
+	  }
     }};
 	
 	
