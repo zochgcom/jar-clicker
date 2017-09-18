@@ -598,7 +598,7 @@ function getCookie(varNavn) {
 	 var tvNumber = 0;
 	 
 	 //defining times as a float so that shit doesen't hit the fan
-	 var parseFloat(times);
+	 var times;
 	 
 	 //Secrets
 	 var SatanConfirmed = false;
@@ -619,7 +619,7 @@ function getCookie(varNavn) {
 	 if (getCookie("times") === 0) {
 	 times = 0.25;
 	 } else {
-	 times = getCookie("times");
+	 times = parseFloat(getCookie("times"));
 	 }
 	 
 	 //BarBackground
