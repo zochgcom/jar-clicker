@@ -728,7 +728,7 @@ function getCookie(varNavn) {
 		money = money - skovpris;
 		shopON = true;
 		skovNumber = skovNumber + 1;
-		skovpris += skovpris/10;
+		skovpris += parseInt(skovpris/2);
 		
 		}
 		//butik
@@ -736,21 +736,21 @@ function getCookie(varNavn) {
 		money = money - butikpris;
 		shopON = true;
 		butikNumber = butikNumber + 1;
-		butikpris += butikpris/10;
+		butikpris += parseInt(butikpris/2);
 		}
 		//avis
 		if (money > avispris && shopON  && mouseX > avisX && mouseX < avisX + avisBredde && mouseY > avisY && mouseY < avisY + avisHoojde){
 		money = money - avispris;
 		shopON = true;
 		avisNumber = avisNumber + 1;
-		avispris += avispris/10;
+		avispris += parseInt(avispris/2);
 		}
 		//tv
 		if (money > tvpris && shopON  && mouseX > tvX && mouseX < tvX + tvBredde && mouseY > tvY && mouseY < tvY + tvHoojde){
 		money = money - tvpris;
 		shopON = true;
 		tvNumber = tvNumber + 1;
-		tvpris += tvpris/10;
+		tvpris += parseInt(tvpris/2);
 		}
 	 
 	 
