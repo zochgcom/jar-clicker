@@ -728,10 +728,6 @@ function getCookie(varNavn) {
 	  barYPos -= 1/times;
 	  TimesClicked++;
 	  
-	  //saves bar progress
-	  setCookie("barProg", barY);
-	  setCookie("barProg2", barYPos);
-	  
 	  coinY = 200 - 25;
 		
 	  var coin = {};
@@ -961,6 +957,8 @@ function getCookie(varNavn) {
 	  money += money;
 	  times += 0.25;
 	  setCookie("times", times);
+	  setCookie("barProg", barY);
+	  setCookie("barProg2", barYPos);
 	  }
 	  };
 	  
