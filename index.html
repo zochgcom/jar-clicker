@@ -453,7 +453,13 @@ function getCookie(varNavn) {
         size(500, 500); 
         frameRate(30);
 	
-	
+		//time
+		var minutesInt = 0;
+		var hoursInt = 0;
+		
+		secondsInt = getCookie("timeS");
+		minutesInt = getCookie("timeM");
+		hoursInt = getCookie("timeH");
 		
 		//?Jars
 		var NewsX = 40;
@@ -681,11 +687,18 @@ function getCookie(varNavn) {
 		butikpris = 100;
 		avispris = 350;
 		tvpris = 10000;
-		time = 0;
+		secondsInt = 0;
+		minutesInt = 0;
+		hoursInt = 0;
 		TimesClicked = 0;
 		times = 0.25;
 		barY = 0;
 		barYPos = 420;
+		
+		setCookie("timeS", 0);
+		setCookie("timeM", 0);
+		setCookie("timeH", 0);
+		
 		} else {
 		
 		}
@@ -715,7 +728,7 @@ function getCookie(varNavn) {
 		money = money - skovpris;
 		shopON = true;
 		skovNumber = skovNumber + 1;
-		skovpris = skovpris + 75;
+		skovpris = skovpris/10;
 		
 		}
 		//butik
@@ -723,21 +736,21 @@ function getCookie(varNavn) {
 		money = money - butikpris;
 		shopON = true;
 		butikNumber = butikNumber + 1;
-		butikpris = butikpris + 100;
+		butikpris = butikpris/10;
 		}
 		//avis
 		if (money > avispris && shopON  && mouseX > avisX && mouseX < avisX + avisBredde && mouseY > avisY && mouseY < avisY + avisHoojde){
 		money = money - avispris;
 		shopON = true;
 		avisNumber = avisNumber + 1;
-		avispris = avispris + 450;
+		avispris = avispris/10;
 		}
 		//tv
 		if (money > tvpris && shopON  && mouseX > tvX && mouseX < tvX + tvBredde && mouseY > tvY && mouseY < tvY + tvHoojde){
 		money = money - tvpris;
 		shopON = true;
 		tvNumber = tvNumber + 1;
-		tvpris = tvpris + 10000;
+		tvpris = tvpris/10;
 		}
 	 
 	 
@@ -951,6 +964,8 @@ function getCookie(varNavn) {
 	if (autoClicktime < millis() - autoClickTimestamp){
 	autoClickTimestamp = millis();
 	money += (5 * avisNumber) + (50 * tvNumber) ;
+	secondsInt++;
+	setCookie("timeS", secondsInt);
 	}  
 	
 	for (var i = coinListX.length -1; i >= 0; i--){
@@ -987,22 +1002,22 @@ function getCookie(varNavn) {
 	  
 	  if(shopON === true){
 	  
-	  var secondsInt = Math.round(millis() / 1000);
-		text("Time Played: " + secondsInt, 15, 95);
+	  //time
+		text("Time Played: " + hoursInt + "h " + minutesInt + "m " + secondsInt + "s", 15, 95);
 		
 	    textSize(12);
 	    image(skovImg,400,310,80,80);
 		text(skovpris,430,405);
-		text("Forrest:  " + skovNumber,15,15);
+		text("Forrests:  " + skovNumber,15,15);
 		image(butikImg,400,210,80,80);
 		text (butikpris,425,300);
-		text("Shop:  " + butikNumber,15,35);
+		text("Stands:  " + butikNumber,15,35);
 		image(avisImg,390,110,100,80);
 		text(avispris,430,200);
-		text("Newspaper:  " + avisNumber,15,55);
+		text("Newspapers:  " + avisNumber,15,55);
 		image(tvImg,374,10,150,100);
 		text(tvpris,425,100);
-		text("Tv:  " + tvNumber,15,75);
+		text("Tvs:  " + tvNumber,15,75);
 		image(infoImg,345,340,30,30);
 		image(infoImg,345,230,30,30);
 		image(infoImg,345,130,30,30);
@@ -1020,6 +1035,17 @@ function getCookie(varNavn) {
 	  	
 	  }
 	 
+	 //every 60 seconds minutesInt++
+	 if (secondsInt >= 60) {
+	 minutesInt++;
+	 secondsInt = 0
+	 setCookie("timeM", minutesInt);
+	 }
+     if	(minutesInt >= 60) {
+	 hoursInt++;
+	 minutesInt = 0;
+	 setCookie("timeH", hoursInt);
+	 }
 	 
 	  bigcoinCountdown = bigcoinCountdown - 1;
 	  
