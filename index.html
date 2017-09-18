@@ -601,9 +601,23 @@ function getCookie(varNavn) {
 	 var SatanConfirmed = false;
 	 
 	 //Bar
+	 if (getCookie("barProg") === 0) {
 	 var barY = 0;
+	 } else {
+	 var barY = getCookie("barProg");
+	 }
+	 
+	 if (getCookie("barProg2") === 0) {
 	 var barYPos = 420;
+	 } else {
+	 var barYPos = 420;
+	 }
+	 
+	 if (getCookie("times") === 0) {
 	 var times = 0.25;
+	 } else {
+	 var times = getCookie("times");
+	 }
 	 
 	 //BarBackground
 	 var barBackgroundY = 120;
@@ -704,6 +718,7 @@ function getCookie(varNavn) {
 		}
 	 }
 	 
+	 //onclick on jar
 	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
 	  money += 1 + (1 * skovNumber ) + (4 * butikNumber) ;
 	  coinListX.push(x);
@@ -712,7 +727,11 @@ function getCookie(varNavn) {
 	  barY += parseFloat(1/times);
 	  barYPos -= 1/times;
 	  TimesClicked++;
-
+	  
+	  //saves bar progress
+	  setCookie("barProg", barY);
+	  setCookie("barProg2", barYPos);
+	  
 	  coinY = 200 - 25;
 		
 	  var coin = {};
@@ -941,6 +960,7 @@ function getCookie(varNavn) {
 	  BarFilled = false;
 	  money += money;
 	  times += 0.25;
+	  setCookie("times", times);
 	  }
 	  };
 	  
@@ -1124,7 +1144,7 @@ function getCookie(varNavn) {
       translate(-BarFilledX,-BarFilledY);
 	  textSize(20);
       text(parseInt( barY/BGbarY*100) + "%", BarFilledX, BarFilledY);
-      popMatrix();
+      popMatrix();	  
 	  }
     }};
 	
