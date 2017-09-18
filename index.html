@@ -606,12 +606,14 @@ function getCookie(varNavn) {
 	 //Bar
 	 if (getCookie("barProg") === 0) {
 	 var barY = 0;
+	 setCookie("barProg", barY);
 	 } else {
 	 var barY = parseInt(getCookie("barProg"));
 	 }
 	 
 	 if (getCookie("barProg2") === 0) {
 	 var barYPos = 420;
+	 setCookie("barProg2", barYPos);
 	 } else {
 	 var barYPos = parseInt(getCookie("barProg2"));
 	 }
