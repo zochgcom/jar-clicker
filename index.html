@@ -458,8 +458,18 @@ function getCookie(varNavn) {
 		var hoursInt = 0;
 		
 		secondsInt = getCookie("timeS");
+		
+		if (getCookie("timesM") === "") {
+		var minutesInt = 0;
+		} else {
 		minutesInt = getCookie("timeM");
+		}
+		
+		if (getCookie("timesH") === "") {
+		var hoursInt = 0;
+		} else {
 		hoursInt = getCookie("timeH");
+		}
 		
 		//?Jars
 		var NewsX = 40;
