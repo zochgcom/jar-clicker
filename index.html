@@ -1099,7 +1099,7 @@ function getCookie(varNavn) {
 	 image(BigcoinImg,bigcoinX,bigcoinY,bigcoinHoojde,bigcoinBredde);
 	 if (mouseClicked && mouseX > bigcoinX && mouseX < bigcoinX + bigcoinBredde && mouseY > bigcoinY && mouseY < bigcoinY + bigcoinHoojde) {
 	 bigcoinCountdown = random(15000,20000);
-	 money = money + floor(random(1500,6000));
+	 money = money * floor(random(2,10));
 	 
 	 }
 	 }
