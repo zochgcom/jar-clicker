@@ -459,13 +459,13 @@ function getCookie(varNavn) {
 		
 		secondsInt = getCookie("timeS");
 		
-		if (getCookie("timesM") === "") {
+		if (getCookie("timesM") === "" || getCookie("timeM") === "0") {
 		var minutesInt = 0;
 		} else {
 		minutesInt = getCookie("timeM");
 		}
 		
-		if (getCookie("timesH") === "") {
+		if (getCookie("timesH") === "" || getCookie("timeM") === "0") {
 		var hoursInt = 0;
 		} else {
 		hoursInt = getCookie("timeH");
