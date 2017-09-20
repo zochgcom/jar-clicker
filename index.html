@@ -653,7 +653,7 @@ function getCookie(varNavn) {
     secondsInt =  parseInt( getCookie("secondsInt"));
 	TimesClicked = parseInt ( getCookie("TimesClicked"));
 	
-    if (getCookie("butikpris") === "0") {
+    if (getCookie("butikpris") === "0" || getCookie("tvpris") === "" ) {
 	
 	} else {
 	butikpris =  parseInt( getCookie("butikpris"));
