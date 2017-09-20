@@ -407,6 +407,8 @@ Chrome
 
 
  -->
+ <script src="numerals.min.js"></script>
+ 
 <script type="text/javascript" id="cookieinfo"
     src="//cookieinfoscript.com/js/cookieinfo.min.js"
     data-bg="#645862"
@@ -586,6 +588,8 @@ function getCookie(varNavn) {
 	 //penge
 	 var money = 0;
 	 money = parseInt( getCookie("money")); //setCookie("money", money);
+	 
+	 var smoney = money;
 	  
 	 var coinX = 200 - 25;
 	 var coinY = 200 - 25;
@@ -1000,9 +1004,13 @@ function getCookie(varNavn) {
 	   
 	   image(jarImg, x - 25, y, jarSizeX, jarSizeY);
 	  
+	  smoney = money;
+	  
+	  var smoney = numeral(money).format('0.0a');
+	  
 	fill (0,0,0)
 	textSize(12);
-	text("Money: "+ money, 280,20);
+	text("Money: ₡"+ smoney, 280,20);
 	
 	if (autoClicktime < millis() - autoClickTimestamp){
 	autoClickTimestamp = millis();
@@ -1050,23 +1058,23 @@ function getCookie(varNavn) {
 		
 	    textSize(12);
 	    image(skovImg,400,310,80,80);
-		text(skovpris,430,405);
+		text("₡" + numeral(skovpris).format("0.0a"),430,405);
 		text("Forrests:  " + skovNumber,15,15);
 		image(butikImg,400,210,80,80);
-		text (butikpris,425,300);
+		text ("₡" + numeral(butikpris).format("0.0a"),425,300);
 		text("Stands:  " + butikNumber,15,35);
 		image(avisImg,390,110,100,80);
-		text(avispris,430,200);
+		text ("₡" + numeral(avispris).format("0.0a"),430,200);
 		text("Newspapers:  " + avisNumber,15,55);
 		image(tvImg,374,10,150,100);
-		text(tvpris,425,100);
+		text("₡" + numeral(tvpris).format("0.0a"),425,100);
 		text("Tvs:  " + tvNumber,15,75);
 		image(infoImg,345,340,30,30);
 		image(infoImg,345,230,30,30);
 		image(infoImg,345,130,30,30);
 		image(infoImg,345,30,30,30);
 		//Times Clicked on Jar
-		text("Times Clicked: " + TimesClicked,15,115);
+		text("Times Clicked: " + numeral(TimesClicked).format("0,0"),15,115);
 		//clear button
 	  fill(255, 0, 0);
 	  rect(460, 0, 40, 10);
