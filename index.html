@@ -647,8 +647,21 @@ function getCookie(varNavn) {
 	 var BarFilledY = 280;
 	 var BarFilled = false;
 	 
+	 //dedicate colors
+	 var forrestRed = 255;
+	 var forrestGreen = 0;
+	 
+	 var butikRed = 255;
+	 var butikGreen = 0;
+	 
+	 var avisRed = 255;
+	 var avisGreen = 0;
+	 
+	 var tvRed = 255;
+	 var tvGreen = 0;
+	 
 	 //Version Variable
-	 var vers = "1.5.2";
+	 var vers = "1.5.3";
 	
     skovNumber =  parseInt( getCookie("skovNumber"));
     butikNumber =  parseInt( getCookie("butikNumber"));
@@ -769,7 +782,7 @@ function getCookie(varNavn) {
 	 
 	 //skoven 
 	 
-	 if (money > skovpris && shopON  && mouseX > skovX && mouseX < skovX + skovBredde && mouseY > skovY && mouseY < skovY + skovHoojde){
+	 if (money >= skovpris && shopON  && mouseX > skovX && mouseX < skovX + skovBredde && mouseY > skovY && mouseY < skovY + skovHoojde){
 		money = money - skovpris;
 		shopON = true;
 		skovNumber = skovNumber + 1;
@@ -777,21 +790,21 @@ function getCookie(varNavn) {
 		
 		}
 		//butik
-		if (money > butikpris && shopON  && mouseX > butikX && mouseX < butikX + butikBredde && mouseY > butikY && mouseY < butikY + butikHoojde){
+		if (money >= butikpris && shopON  && mouseX > butikX && mouseX < butikX + butikBredde && mouseY > butikY && mouseY < butikY + butikHoojde){
 		money = money - butikpris;
 		shopON = true;
 		butikNumber = butikNumber + 1;
 		butikpris += parseInt(butikpris/2);
 		}
 		//avis
-		if (money > avispris && shopON  && mouseX > avisX && mouseX < avisX + avisBredde && mouseY > avisY && mouseY < avisY + avisHoojde){
+		if (money >= avispris && shopON  && mouseX > avisX && mouseX < avisX + avisBredde && mouseY > avisY && mouseY < avisY + avisHoojde){
 		money = money - avispris;
 		shopON = true;
 		avisNumber = avisNumber + 1;
 		avispris += parseInt(avispris/2);
 		}
 		//tv
-		if (money > tvpris && shopON  && mouseX > tvX && mouseX < tvX + tvBredde && mouseY > tvY && mouseY < tvY + tvHoojde){
+		if (money >= tvpris && shopON  && mouseX > tvX && mouseX < tvX + tvBredde && mouseY > tvY && mouseY < tvY + tvHoojde){
 		money = money - tvpris;
 		shopON = true;
 		tvNumber = tvNumber + 1;
@@ -1056,18 +1069,59 @@ function getCookie(varNavn) {
 	  //time
 		text("Time Played: " + hoursInt + "h " + minutesInt + "m " + secondsInt + "s", 15, 95);
 		
+		//checks if money is more than price
+		if (money >= skovpris) {
+		forrestRed = 0;
+		forrestGreen = 255;
+		} else {
+		forrestRed = 255;
+		forrestGreen = 0;
+		}
+
+		if (money >= butikpris) {
+		butikRed = 0;
+		butikGreen = 255;
+		} else {
+		butikRed = 255;
+		butikGreen = 0;
+		}
+		
+		if (money >= avispris) {
+		avisRed = 0;
+		avisGreen = 255;
+		} else {
+		avisRed = 255;
+		avisGreen = 0;
+		}
+
+		if (money >= tvpris) {
+		tvRed = 0;
+		tvGreen = 255;
+		} else {
+		tvRed = 255;
+		tvGreen = 0;
+		}
+		
 	    textSize(12);
 	    image(skovImg,400,310,80,80);
+		fill(forrestRed, forrestGreen, 0);
 		text("₡" + numeral(skovpris).format("0.0a"),430,405);
+		fill(0,0,0);
 		text("Forrests:  " + skovNumber,15,15);
 		image(butikImg,400,210,80,80);
+		fill(butikRed, butikGreen, 0);
 		text ("₡" + numeral(butikpris).format("0.0a"),425,300);
+		fill(0,0,0);
 		text("Stands:  " + butikNumber,15,35);
 		image(avisImg,390,110,100,80);
+		fill(avisRed, avisGreen, 0);
 		text ("₡" + numeral(avispris).format("0.0a"),430,200);
+		fill(0,0,0);
 		text("Newspapers:  " + avisNumber,15,55);
 		image(tvImg,374,10,150,100);
+		fill(tvRed, tvGreen, 0);
 		text("₡" + numeral(tvpris).format("0.0a"),425,100);
+		fill(0,0,0);
 		text("Tvs:  " + tvNumber,15,75);
 		image(infoImg,345,340,30,30);
 		image(infoImg,345,230,30,30);
