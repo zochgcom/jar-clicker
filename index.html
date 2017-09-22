@@ -760,7 +760,11 @@ function getCookie(varNavn) {
 	 
 	 //onclick on jar
 	 if (mouseX > x - 25 && mouseX < x - 25 + jarSizeX && mouseY > y && mouseY < y + jarSizeY ) {
-	  money += 1 + (1 * skovNumber ) + (4 * butikNumber) ;
+	  if (butikNumber === 0) {
+	  money += 1 + (1 * skovNumber ) + (5 * butikNumber);
+	  } else {
+	  money += 1 + (1 * skovNumber ) + (5 * butikNumber) - 1;
+	  }
 	  coinListX.push(x);
 	  coinListY.push(y);
 	  
@@ -1039,7 +1043,11 @@ function getCookie(varNavn) {
 	secondsInt++;
 	setCookie("timeS", secondsInt);
 	butik5 = butikNumber*5
-	CPSb = CPS + butik5 + skovNumber
+	if (CPS > 0) {
+	CPSb = CPS + butik5 + skovNumber;
+	} else {
+	CPSb = 0;
+	}
 	if (butikNumber != 0 || skovNumber != 0) {
 	CPS2 = CPSb + (tvNumber*50) + (avisNumber*5);
 	} else {
