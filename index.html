@@ -663,6 +663,7 @@ function getCookie(varNavn) {
 	 //click per seconde
 	 var CPS = 0;
 	 var CPS2 = CPS;
+	 var CPSb = 0;
 	 
 	 //Version Variable
 	 var vers = "1.5.3";
@@ -1037,7 +1038,13 @@ function getCookie(varNavn) {
 	money += (5 * avisNumber) + (50 * tvNumber) ;
 	secondsInt++;
 	setCookie("timeS", secondsInt);
+	butik5 = butikNumber*5
+	CPSb = CPS + butik5 + skovNumber
+	if (butikNumber != 0 || skovNumber != 0) {
+	CPS2 = CPSb + (tvNumber*50) + (avisNumber*5);
+	} else {
 	CPS2 = CPS;
+	}
 	CPS = 0;
 	}  
 	
