@@ -660,6 +660,10 @@ function getCookie(varNavn) {
 	 var tvRed = 255;
 	 var tvGreen = 0;
 	 
+	 //click per seconde
+	 var CPS = 0;
+	 var CPS2 = CPS;
+	 
 	 //Version Variable
 	 var vers = "1.5.3";
 	
@@ -762,6 +766,8 @@ function getCookie(varNavn) {
 	  barY += parseFloat(1/times);
 	  barYPos -= 1/times;
 	  TimesClicked++;
+	  
+	  CPS++;
 	  
 	  //saves bar progress
 	  setCookie("barProg", parseInt(barY));
@@ -1024,12 +1030,15 @@ function getCookie(varNavn) {
 	fill (0,0,0)
 	textSize(12);
 	text("Money: ₡"+ smoney, 280,20);
+	text("CPS: " + CPS2, 280, 40);
 	
 	if (autoClicktime < millis() - autoClickTimestamp){
 	autoClickTimestamp = millis();
 	money += (5 * avisNumber) + (50 * tvNumber) ;
 	secondsInt++;
 	setCookie("timeS", secondsInt);
+	CPS2 = CPS;
+	CPS = 0;
 	}  
 	
 	for (var i = coinListX.length -1; i >= 0; i--){
