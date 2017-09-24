@@ -584,6 +584,7 @@ function getCookie(varNavn) {
 	 var jarSizeX = 100;
 	 var jarSizeY = 100;
 	 var TimesClicked = 0;
+	 var HideJar = false;
 	 
 	 //penge
 	 var money = 0;
@@ -617,7 +618,8 @@ function getCookie(varNavn) {
 	 //Secrets
 	 var SatanConfirmed = false;
 	 
-	 //Bar
+	 
+	 //BarY
 	 if (getCookie("barProg") === 0 || getCookie("barProg") === "") {
 	 var barY = 0;
 	 setCookie("barProg", barY);
@@ -625,6 +627,7 @@ function getCookie(varNavn) {
 	 var barY = parseInt(getCookie("barProg"));
 	 }
 	 
+	 //BarBG
 	 if (getCookie("barProg2") === 0 || getCookie("barProg2") === "") {
 	 var barYPos = 420;
 	 setCookie("barProg2", barYPos);
@@ -632,11 +635,13 @@ function getCookie(varNavn) {
 	 var barYPos = parseInt(getCookie("barProg2"));
 	 }
 	 
+	 //Time
 	 if (getCookie("times") === 0 || getCookie("times") === "") {
 	 times = 0.25;
 	 } else {
 	 times = parseFloat(getCookie("times"));
 	 }
+	 
 	 
 	 //BarBackground
 	 var barBackgroundY = 120;
@@ -887,6 +892,8 @@ function getCookie(varNavn) {
 	}
 	
 		}
+		
+		
 	
 	 };
 	  
@@ -929,6 +936,7 @@ function getCookie(varNavn) {
 	/* @pjs preload="Avis.png"; */
 	var avisImg = loadImage("Avis.png");
 	
+	//Old Tv
 	/* @pjs preload="tv.png"; */
 	var tvImg = loadImage("tv.png");
 	
@@ -954,9 +962,28 @@ function getCookie(varNavn) {
 	
 	/* @pjs preload="BarFrame.png"; */
 	var BarFrame = loadImage("BarFrame.png");
-
 	
+    //New Stand
+	/* @pjs preload="Stand_new.png"; */
+	var StandNew = loadImage("Stand_new.png");
 	
+	/* @pjs preload="BarUpgrades.png"; */
+	var BarUpg = loadImage("BarUpgrades.png");
+	
+	/* @pjs preload="ClickerUpgrades.png"; */
+	var ClickerUpg = loadImage("ClickerUpgrades.png");
+	
+	/* @pjs preload="AutoUpgrades.png"; */
+	var AutoUpg = loadImage("AutoUpgrades.png");
+	
+	/* @pjs preload="Arrow_Back.png"; */
+	var AutoUpg = loadImage("Arrow_Back.png");
+	
+	/* @pjs preload="Arrow_Left"; */
+	var AutoUpg = loadImage("Arrow_Left.png");
+	
+	/* @pjs preload="Arrow_Right.png"; */
+	var AutoUpg = loadImage("Arrow_Right.png");
 	
 	  var draw = function(){
 	
@@ -1026,7 +1053,9 @@ function getCookie(varNavn) {
 	 y += 1;
 	   }
 	   
+	  
 	   image(jarImg, x - 25, y, jarSizeX, jarSizeY);
+	  
 	  
 	  smoney = money;
 	  
@@ -1090,6 +1119,7 @@ function getCookie(varNavn) {
 	  
 	  if(shopON === true){
 	  
+	  
 	  //time
 		text("Time Played: " + hoursInt + "h " + minutesInt + "m " + secondsInt + "s", 15, 95);
 		
@@ -1132,7 +1162,7 @@ function getCookie(varNavn) {
 		text("₡" + numeral(skovpris).format("0.0a"),430,405);
 		fill(0,0,0);
 		text("Forrests:  " + skovNumber,15,15);
-		image(butikImg,400,210,80,80);
+		image(StandNew,410,208,70,80);
 		fill(butikRed, butikGreen, 0);
 		text ("₡" + numeral(butikpris).format("0.0a"),425,300);
 		fill(0,0,0);
@@ -1161,8 +1191,9 @@ function getCookie(varNavn) {
 	  fill(255,255,255);
 	  text("RESET", 464, 9);
 	  fill(0, 0, 0);
-	  	
 	  }
+	 
+	 
 	 
 	 //every 60 seconds minutesInt++
 	 if (secondsInt >= 60) {
