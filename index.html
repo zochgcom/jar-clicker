@@ -777,7 +777,7 @@ function getCookie(varNavn) {
 	  barYPos -= 1/times;
 	  TimesClicked++;
 	  
-	  CPS++;
+	  CPS += 1 + butiknumber*5 + skovnumber;
 	  
 	  //saves bar progress
 	  setCookie("barProg", parseInt(barY));
@@ -1073,7 +1073,7 @@ function getCookie(varNavn) {
 	setCookie("timeS", secondsInt);
 	butik5 = butikNumber*5
 	if (CPS > 0) {
-	CPSb = CPS + butik5 + skovNumber;
+	CPSb = CPS;
 	} else {
 	CPSb = 0;
 	}
