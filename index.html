@@ -1069,6 +1069,7 @@ function getCookie(varNavn) {
 	if (autoClicktime < millis() - autoClickTimestamp){
 	autoClickTimestamp = millis();
 	money += (5 * avisNumber) + (50 * tvNumber) ;
+	setCookie("money", secondsInt)
 	secondsInt++;
 	setCookie("timeS", secondsInt);
 	butik5 = butikNumber*5
