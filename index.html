@@ -707,8 +707,8 @@ function getCookie(varNavn) {
 	 //timer
 	 var autoClicktime = 1000; //millis()
 	 var autoClickTimestamp = millis();
-
-	 var autoClicktimeM = 1000 / 100; //millis()
+	 
+	 var autoClicktimeM = 1000/50; //millis()
 	 var autoClickTimestampM = millis();
 	 
 	 var mouseClicked = function(){
@@ -1069,11 +1069,20 @@ function getCookie(varNavn) {
 	text("Money: ₡"+ smoney, 280,20);
 	//text("CPS: " + CPS2, 280, 40);
 	
+	//automated money
+	if (autoClicktimeM < millis() - autoClickTimestampM) {
+	money += (5/50 * avisNumber) + (50/50 * tvNumber) ;
+	autoClickTimestampM = millis();
+	}
+	
+	
 	if (autoClicktime < millis() - autoClickTimestamp){
 	setCookie("money", secondsInt)
 	secondsInt++;
 	setCookie("timeS", secondsInt);
 	butik5 = butikNumber*5
+	//money += (5 * avisNumber) + (50 * tvNumber) ;
+	autoClickTimestamp = millis();
 	if (CPS > 0) {
 	CPSb = CPS;
 	} else {
@@ -1086,11 +1095,6 @@ function getCookie(varNavn) {
 	}
 	CPS = 0;
 	}  
-
-	if (autoClicktimeM < millis() - autoClickTimestampM){
-	autoClickTimestamp = millis();
-	money += (5/100 * avisNumber) + (50/100 * tvNumber) ;
-	}
 	
 	for (var i = coinListX.length -1; i >= 0; i--){
 	
